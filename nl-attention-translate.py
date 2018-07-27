@@ -1,4 +1,4 @@
-# coding: utf-8
+1  # coding: utf-8
 
 # # Neural Machine Translation
 #
@@ -407,17 +407,15 @@ model.load_weights('models/model.h5')
 # In[16]:
 
 EXAMPLES = [
-    '3 May 1979', '5 April 09', '21th of August 2016', 'Tue 10 Jul 2007',
+    '2 May 1979', '25 April 09', '12 June 2018', 'Tue 12 Jul 2007',
     'Saturday May 9 2018', 'March 3 2001', 'March 3rd 2001', '1 March 2001'
 ]
 for example in EXAMPLES:
-
     source = np.array([string_to_int(example, Tx, human_vocab)])
     source = np.array(
         list(
             map(lambda x: to_categorical(x, num_classes=len(human_vocab)),
                 source)))
-    print("sourced:", source.shape)
     prediction = model.predict([source, s0, c0])
     prediction = np.argmax(prediction, axis=-1)
     output = [inv_machine_vocab[int(i)] for i in prediction]
@@ -456,13 +454,13 @@ for example in EXAMPLES:
 
 # In[18]:
 
-attention_map = plot_attention_map(
-    model,
-    human_vocab,
-    inv_machine_vocab,
-    "Tuesday 09 Oct 1993",
-    num=7,
-    n_s=64)
+# attention_map = plot_attention_map(
+#     model,
+#     human_vocab,
+#     inv_machine_vocab,
+#     "Tuesday 09 Oct 1993",
+#     num=7,
+#     n_s=64)
 
 # On the generated plot you can observe the values of the attention weights for each character of the predicted output. Examine this plot and check that where the network is paying attention makes sense to you.
 #
